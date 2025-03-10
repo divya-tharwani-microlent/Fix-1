@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho-timesheet-API", "Zoho-timesheet-API\Zoho-timesheet-API.csproj", "{263C663F-09CB-4580-A3C7-51EAEBF6B3BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho-timesheet-EFC", "Zoho-timesheet-EFC\Zoho-timesheet-EFC.csproj", "{FFC21B18-0174-41CA-86DA-D6302C22D27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho-timesheet-Core", "Zoho-timesheet-Core\Zoho-timesheet-Core.csproj", "{A476196A-D715-44CE-87D1-C3A82A6EB31F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{263C663F-09CB-4580-A3C7-51EAEBF6B3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{263C663F-09CB-4580-A3C7-51EAEBF6B3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{263C663F-09CB-4580-A3C7-51EAEBF6B3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{263C663F-09CB-4580-A3C7-51EAEBF6B3BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC21B18-0174-41CA-86DA-D6302C22D27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC21B18-0174-41CA-86DA-D6302C22D27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC21B18-0174-41CA-86DA-D6302C22D27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC21B18-0174-41CA-86DA-D6302C22D27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A476196A-D715-44CE-87D1-C3A82A6EB31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A476196A-D715-44CE-87D1-C3A82A6EB31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A476196A-D715-44CE-87D1-C3A82A6EB31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A476196A-D715-44CE-87D1-C3A82A6EB31F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60AB0481-934E-48CA-A62A-E81B6CD027D6}
+	EndGlobalSection
+EndGlobal
