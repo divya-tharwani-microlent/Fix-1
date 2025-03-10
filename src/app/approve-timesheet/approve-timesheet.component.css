@@ -1,0 +1,21 @@
+.status {
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: #e9f5ff;
+}
+
+#groupByDropdown{
+    color:#484c7f;
+    font-size: 18px;
+    font-weight: bold;
+}
+tbody tr td {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 15px;
+}
+.table-responsive{
+    max-height: 490px;
+    overflow-y: auto;
+}

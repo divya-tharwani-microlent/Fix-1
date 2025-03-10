@@ -1,0 +1,18 @@
+.Addbtn{
+  padding-left: 40%;
+}
+.info-item {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.info-item b {
+  color: #484c7f;
+}
+
+.info-item span {
+  color: #333;
+}
