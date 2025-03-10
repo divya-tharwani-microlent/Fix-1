@@ -37,6 +37,7 @@ export class AuthCallbackComponent implements OnInit {
 
       this.http.post(tokenApiUrl, { code }).subscribe({
         next: (response: any) => {
+          console.log(response);
           // Save login status in session
           // sessionStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('ZUID', response.userId);

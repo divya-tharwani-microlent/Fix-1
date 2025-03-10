@@ -23,6 +23,7 @@ export class AppComponent {
     });
   }
   ngOnInit() {
+    
     // Set initial login status based on session
     this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
     this.authService.getUserDetail().subscribe(userDetail => {
@@ -36,7 +37,10 @@ export class AppComponent {
   logOut() {
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {
+      window.history.replaceState({}, '', '/login');
+    });
   }
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;

@@ -62,7 +62,7 @@ export class TimesheetComponent implements OnInit {
   constructor(private router: Router, private approverService: ApproverService, private commonService: CommonService, private taskService: TaskService, private hs: HelperService, private notyS: NotfiyService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.userId = "60030099161" //this.authService.getUserId();//"60030099161";//"60010572588";
+    this.userId = "60030099161";//this.authService.getUserId();//"60030099161";//"60010572588";
     this.commonService.getProjectList().subscribe((data: any) => {
       if (data != null) {
         this.projects = data;
@@ -82,7 +82,7 @@ export class TimesheetComponent implements OnInit {
       FromTime: new FormControl('', [Validators.required]),
       ToDate: new FormControl('', [Validators.required,]),
       ToTime: new FormControl('', [Validators.required]),
-      Notes: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z0-9$& ]+$"), Validators.maxLength(500)])
+      Notes: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]+$"), Validators.maxLength(100)])
       ,
     });
     this.timesheetStatuses = [
@@ -243,6 +243,7 @@ export class TimesheetComponent implements OnInit {
     this.commonService.getTaskList(event.target.value).subscribe((data: any) => {
       if (data != null) {
         this.tasks = data;
+        console.log(this.tasks);
       }
     });
   }
@@ -250,17 +251,14 @@ export class TimesheetComponent implements OnInit {
   addTask() {
     if (this.TaskCreateForm.valid) {
       this.TaskCreateForm.get('FromDate')?.enable();
+
       if (this.TaskCreateForm.value.FromDate && this.TaskCreateForm.value.FromTime) {
         // Combine Date and Time into a single Date object
-        const dateParts = this.TaskCreateForm.value.FromDate.split('-');
-        const dateTime = new Date(Number(dateParts[0]), Number(dateParts[1]) - 1, Number(dateParts[2]));
-
+        const dateTime = new Date(this.TaskCreateForm.value.FromDate);
         const timeParts = this.TaskCreateForm.value.FromTime.split(':');
         dateTime.setHours(Number(timeParts[0]), Number(timeParts[1]));
 
-        const TodateParts = this.TaskCreateForm.value.ToDate.split('-');
-        const TodateTime = new Date(Number(TodateParts[0]), Number(TodateParts[1]) - 1, Number(TodateParts[2]));
-        //const TodateTime = new Date(this.TaskCreateForm.value.ToDate);
+        const TodateTime = new Date(this.TaskCreateForm.value.ToDate);
         const TotimeParts = this.TaskCreateForm.value.ToTime.split(':');
         TodateTime.setHours(Number(TotimeParts[0]), Number(TotimeParts[1]));
 
@@ -316,11 +314,6 @@ export class TimesheetComponent implements OnInit {
     const d = new Date(date);
     return `${d.getFullYear()}-${this.pad(d.getMonth() + 1)}-${this.pad(d.getDate())}T${this.pad(d.getHours())}:${this.pad(d.getMinutes())}:00.000`;
   }
-  // convertToLocalISOString(date: Date): string {
-  //   const offset = date.getTimezoneOffset(); // Get time zone difference in minutes
-  //   date.setMinutes(date.getMinutes() - offset); // Adjust the date to local time
-  //   return date.toISOString().slice(0, 19); // Remove milliseconds and 'Z' (which indicates UTC)
-  // }
 
   pad(value: number): string {
     return value < 10 ? '0' + value : value.toString();
