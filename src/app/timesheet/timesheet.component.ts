@@ -253,19 +253,18 @@ export class TimesheetComponent implements OnInit {
   }
   
   onProjectSelect(event: any) {
-    debugger
-    this.TaskCreateForm.patchValue({ ProjectTaskId: null });
+    // debugger
+    // this.TaskCreateForm.patchValue({ ProjectTaskId: null });
     this.commonService.getTaskList(event.target.value).subscribe((data: any) => {
       if (data != null) {
         this.tasks = data;
-        
         console.log(this.tasks);
       }
     });
   }
 
   addTask() {
-    debugger
+    // debugger
     if (this.TaskCreateForm.valid) {
       this.TaskCreateForm.get('FromDate')?.enable();
 
@@ -318,12 +317,12 @@ export class TimesheetComponent implements OnInit {
         this.loadTasksWithZoho();
       });
       this.TaskCreateForm.get('FromDate')?.disable(); // Re-disable it
-      this.closeModal();
+      
     }
     else {
       this.hs.GetErrorsFromFormGroup(this.TaskCreateForm, this.validationMapping);
     }
-    
+    this.closeModal();
   
   }
 
