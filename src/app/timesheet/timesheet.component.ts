@@ -265,6 +265,7 @@ export class TimesheetComponent implements OnInit {
   }
 
   addTask() {
+    debugger
     if (this.TaskCreateForm.valid) {
       this.TaskCreateForm.get('FromDate')?.enable();
 
@@ -317,20 +318,13 @@ export class TimesheetComponent implements OnInit {
         this.loadTasksWithZoho();
       });
       this.TaskCreateForm.get('FromDate')?.disable(); // Re-disable it
+      this.closeModal();
     }
     else {
       this.hs.GetErrorsFromFormGroup(this.TaskCreateForm, this.validationMapping);
     }
-    this.closeModal();
-    this.TaskCreateForm.reset({
-      ProjectId: null,
-      ProjectTaskId: null,
-      FromDate: this.from_date,
-      FromTime: '',
-      ToDate: this.to_date,
-      ToTime: '',
-      Notes: ''
-    });
+    
+  
   }
 
   formatLocalDateTime(date: string | Date): string {
