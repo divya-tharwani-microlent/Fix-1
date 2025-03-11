@@ -83,7 +83,7 @@ export class TimesheetComponent implements OnInit {
       FromTime: new FormControl('', [Validators.required]),
       ToDate: new FormControl('', [Validators.required,]),
       ToTime: new FormControl('', [Validators.required]),
-      Notes: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]+$"), Validators.maxLength(100)])
+      Notes: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z0-9$& ]+$"), Validators.maxLength(500)])
       ,
     });
     this.timesheetStatuses = [
