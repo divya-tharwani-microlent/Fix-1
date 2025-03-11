@@ -165,8 +165,9 @@
               </div>
               <div class="col-md-6">
                 <label for="cat" class="form-label">Task</label>
-                <select id="category" formControlName="ProjectTaskId" class="form-select">
-                  <option *ngFor="let task of tasks" [value]="task.id">
+                <select id="category" formControlName="ProjectTaskId" class="form-select" [compareWith]="compareTask">
+                  <option value="null" disabled selected>Please Select a Task</option>
+                  <option *ngFor="let task of tasks" [value]="task.id" >
                     {{ task.name }}
                   </option>
                 </select>

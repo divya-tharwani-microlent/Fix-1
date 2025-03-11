@@ -62,6 +62,7 @@ export class TimesheetComponent implements OnInit {
   constructor(private router: Router, private approverService: ApproverService, private commonService: CommonService, private taskService: TaskService, private hs: HelperService, private notyS: NotfiyService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    debugger
     this.userId = "60030099161";//this.authService.getUserId();//"60030099161";//"60010572588";
     this.commonService.getProjectList().subscribe((data: any) => {
       if (data != null) {
@@ -223,7 +224,16 @@ export class TimesheetComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
-    this.TaskCreateForm.reset();
+    this.TaskCreateForm.reset({
+      ProjectId: null,
+      ProjectTaskId: null,
+      FromDate: this.from_date,
+      FromTime: '',
+      ToDate: this.to_date,
+      ToTime: '',
+      Notes: ''
+    });
+  
     //change Modal dates 
     const date = new Date(this.from_date);
     // date.setDate(date.getDate() + 1);
@@ -238,11 +248,17 @@ export class TimesheetComponent implements OnInit {
   loadTasks() {
     this.taskService.getTasks().subscribe((data) => (this.timesheets = data));
   }
-
+  compareTask(task1: any, task2: any): boolean {
+    return task1 && task2 ? task1.id === task2.id : task1 === task2;
+  }
+  
   onProjectSelect(event: any) {
+    debugger
+    this.TaskCreateForm.patchValue({ ProjectTaskId: null });
     this.commonService.getTaskList(event.target.value).subscribe((data: any) => {
       if (data != null) {
         this.tasks = data;
+        
         console.log(this.tasks);
       }
     });
@@ -306,6 +322,15 @@ export class TimesheetComponent implements OnInit {
       this.hs.GetErrorsFromFormGroup(this.TaskCreateForm, this.validationMapping);
     }
     this.closeModal();
+    this.TaskCreateForm.reset({
+      ProjectId: null,
+      ProjectTaskId: null,
+      FromDate: this.from_date,
+      FromTime: '',
+      ToDate: this.to_date,
+      ToTime: '',
+      Notes: ''
+    });
   }
 
   formatLocalDateTime(date: string | Date): string {
